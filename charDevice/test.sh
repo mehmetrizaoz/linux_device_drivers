@@ -11,12 +11,12 @@
 
 insmod hello_world_module.ko
 echo -"------------------------------"
-dmesg
+cat /proc/devices
 echo -"------------------------------"
 lsmod
 echo -"------------------------------"
-modinfo hello_world_module.ko
-echo -"------------------------------"
+
+
 rmmod hello_world_module.ko
 
 

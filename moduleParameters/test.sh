@@ -1,7 +1,7 @@
 #!/bin/sh
 ####################################################
 # test.sh    : hello_world driver
-# Usage      : sh drive.sh &
+# Usage      : sudo ./test.sh &
 #
 # Todo List  :
 #

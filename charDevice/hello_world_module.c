@@ -6,7 +6,7 @@
 dev_t dev = MKDEV(235, 0);
 static int __init hello_world_init(void)
 {
-    register_chrdev_region(dev, 1, "Embetronicx_Dev");
+    register_chrdev_region(dev, 1, "MyDevice");
     printk(KERN_INFO "Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
     printk(KERN_INFO "Kernel Module Inserted Successfully...\n");
     return 0;
@@ -22,6 +22,6 @@ module_init(hello_world_init);
 module_exit(hello_world_exit);
  
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("EmbeTronicX <embetronicx@gmail.com or admin@embetronicx.com>");
+MODULE_AUTHOR("<mehmetrizaoz@gmail.com>");
 MODULE_DESCRIPTION("A simple hello world driver");
 MODULE_VERSION("1.0");
