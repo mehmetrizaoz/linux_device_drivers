@@ -10,9 +10,13 @@
 #####################################################
 
 insmod hello_world_module.ko
-rmmod hello_world_module.ko
+echo -"------------------------------"
 dmesg
-echo "------------------------------"
+echo -"------------------------------"
+lsmod
+echo -"------------------------------"
 modinfo hello_world_module.ko
+echo -"------------------------------"
+rmmod hello_world_module.ko
 
 
