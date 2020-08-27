@@ -15,8 +15,8 @@ module_param_array(arr_valueETX, int, NULL, S_IRUSR|S_IWUSR);      //Array of in
 int notify_param(const char *val, const struct kernel_param *kp){
         int res = param_set_int(val, kp); // Use helper for write variable
         if(res==0) {
-                printk(KERN_INFO "****Call back function called****\n");
-                printk(KERN_INFO "New value of cb_valueETX = %d\n", cb_valueETX);
+                printk(KERN_INFO "****Call back function called\n");
+                printk(KERN_INFO "****New value of cb_valueETX = %d\n", cb_valueETX);
                 return 0;
         }
         return -1;

@@ -11,7 +11,7 @@
 clear
 echo "------------------------------"
 modinfo hello_world_module.ko 
-insmod hello_world_module.ko
+insmod hello_world_module.ko valueETX=14 nameETX="ahmet" arr_valueETX=100,102,104,106
 echo "------------------------------"
 lsmod | grep hello_world
 echo "------------------------------"
