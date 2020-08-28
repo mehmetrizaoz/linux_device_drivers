@@ -8,14 +8,14 @@
 # Date       : 25/08/2020
 # Author     : Mehmet Rıza ÖZ - mehmetrizaoz@gmail.com
 #####################################################
-
+clear
 insmod hello_world_module.ko
 echo -"------------------------------"
-cat /proc/devices
+cat /proc/devices | grep MyDevice
 echo -"------------------------------"
-lsmod
+lsmod | grep hello_world_module
 echo -"------------------------------"
-
+dmesg | tail -10
 
 rmmod hello_world_module.ko
 
