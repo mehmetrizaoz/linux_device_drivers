@@ -11,8 +11,14 @@
 clear
 insmod hello_world_module.ko
 echo -"------------------------------"
-cat /proc/devices | grep MyDevice
+cat /proc/devices | grep myDev
 echo -"------------------------------"
+ls -l /sys/class | grep myClass
+echo -"------------------------------"
+ls -l /dev | grep myDevice
+echo -"------------------------------"
+
+
 lsmod | grep hello_world_module
 echo -"------------------------------"
 dmesg | tail -10
