@@ -13,9 +13,8 @@ int main()
     int fd;
     char option;
     printf("*********************************\n");
-    printf("*******WWW.EmbeTronicX.com*******\n");
 
-    fd = open("/dev/etx_device", O_RDWR);
+    fd = open("/dev/MyDevice", O_RDWR);
     if(fd < 0) {
         printf("Cannot open device file...\n");
         return 0;

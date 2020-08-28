@@ -14,7 +14,7 @@ dev_t dev = 0;
 static struct class *dev_class;
 static struct cdev etx_cdev;
 uint8_t *kernel_buffer;
- 
+
 static int __init etx_driver_init(void);
 static void __exit etx_driver_exit(void);
 static int etx_open(struct inode *inode, struct file *file);
@@ -65,7 +65,7 @@ static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, 
 static int __init etx_driver_init(void)
 {
     /*Allocating Major number*/
-    if((alloc_chrdev_region(&dev, 0, 1, "etx_Dev")) <0){
+    if((alloc_chrdev_region(&dev, 0, 1, "MyDev")) <0){
         printk(KERN_INFO "Cannot allocate major number\n");
         return -1;
     }
@@ -81,13 +81,13 @@ static int __init etx_driver_init(void)
     }
  
     /*Creating struct class*/
-    if((dev_class = class_create(THIS_MODULE,"etx_class")) == NULL){
+    if((dev_class = class_create(THIS_MODULE,"MyClass")) == NULL){
         printk(KERN_INFO "Cannot create the struct class\n");
         goto r_class;
     }
  
     /*Creating device*/
-    if((device_create(dev_class,NULL,dev,NULL,"etx_device")) == NULL){
+    if((device_create(dev_class,NULL,dev,NULL,"MyDevice")) == NULL){
         printk(KERN_INFO "Cannot create the Device 1\n");
         goto r_device;
     }
@@ -114,6 +114,6 @@ module_init(etx_driver_init);
 module_exit(etx_driver_exit);
  
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("EmbeTronicX <embetronicx@gmail.com or admin@embetronicx.com>");
+MODULE_AUTHOR("<mehmetrizaoz@gmail.com>");
 MODULE_DESCRIPTION("A simple device driver");
 MODULE_VERSION("1.4");

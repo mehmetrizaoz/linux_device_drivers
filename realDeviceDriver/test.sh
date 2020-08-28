@@ -9,7 +9,7 @@
 # Author     : Mehmet Rıza ÖZ - mehmetrizaoz@gmail.com
 #####################################################
 clear
-chmod 777 /dev/etx_device
+chmod 777 /dev/myDevice
 insmod hello_world_module.ko
 echo -"------------------------------"
 ./test_app
