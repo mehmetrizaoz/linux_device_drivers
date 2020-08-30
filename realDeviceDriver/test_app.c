@@ -30,26 +30,26 @@ int main()
         printf("Your Option = %c\n", option);
                 
         switch(option) {
-            case '1':
-                printf("Enter the string to write into driver :");
-                scanf("  %[^\t\n]s", write_buf);
-                printf("Data Writing ...");
-                write(fd, write_buf, strlen(write_buf)+1);
-                printf("Done!\n");
-            break;
-            case '2':
-                printf("Data Reading ...");
-                read(fd, read_buf, 1024);
-                printf("Done!\n\n");
-                printf("Data = %s\n\n", read_buf);
-                break;
-            case '3':
-                close(fd);
-                exit(1);
-            break;
-            default:
-                printf("Enter Valid option = %c\n",option);
-            break;
+	    case '1':
+		printf("Enter the string to write into driver :");
+		scanf("  %[^\t\n]s", write_buf);
+		printf("Data Writing ...");
+		write(fd, write_buf, strlen(write_buf)+1);
+		printf("Done!\n");
+	    break;
+	    case '2':
+		printf("Data Reading ...");
+		read(fd, read_buf, 1024);
+		printf("Done!\n\n");
+		printf("Data = %s\n\n", read_buf);
+		break;
+	    case '3':
+		close(fd);
+		exit(1);
+	    break;
+	    default:
+		printf("Enter Valid option = %c\n",option);
+	    break;
          }
       }
       
