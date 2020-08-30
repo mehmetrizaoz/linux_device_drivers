@@ -14,7 +14,6 @@ int main(){
     int fd;
     int32_t value, number;
     printf("*********************************\n");
-    printf("*******WWW.EmbeTronicX.com*******\n");
  
     printf("\nOpening Driver\n");
     fd = open("/dev/MyDevice", O_RDWR);
