@@ -9,12 +9,12 @@
 # Author     : Mehmet Rıza ÖZ - mehmetrizaoz@gmail.com
 #####################################################
 clear
-chmod 777 /dev/myDevice
 insmod hello_world_module.ko
+chmod 777 /dev/MyDevice
 echo -"------------------------------"
 ./test_app
 
 dmesg | tail -10
-#rmmod hello_world_module.ko
+rmmod hello_world_module.ko
 
 
