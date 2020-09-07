@@ -37,10 +37,6 @@ int main()
     int32_t value, number;
     struct sigaction act;
  
-    printf("*********************************\n");
-    printf("*******WWW.EmbeTronicX.com*******\n");
-    printf("*********************************\n");
- 
     /* install ctrl-c interrupt handler to cleanup at exit */
     sigemptyset (&act.sa_mask);
     act.sa_flags = (SA_SIGINFO | SA_RESETHAND);
@@ -56,7 +52,7 @@ int main()
     printf("Installed signal handler for SIGETX = %d\n", SIGETX);
  
     printf("\nOpening Driver\n");
-    fd = open("/dev/etx_device", O_RDWR);
+    fd = open("/dev/myDevice", O_RDWR);
     if(fd < 0) {
             printf("Cannot open device file...\n");
             return 0;

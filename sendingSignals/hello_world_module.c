@@ -120,7 +120,7 @@ static long etx_ioctl(struct file *file, unsigned int cmd, unsigned long arg){
  
 static int __init etx_driver_init(void){
     /*Allocating Major number*/
-    if((alloc_chrdev_region(&dev, 0, 1, "etx_Dev")) <0){
+    if((alloc_chrdev_region(&dev, 0, 1, "myDev")) <0){
             printk(KERN_INFO "Cannot allocate major number\n");
             return -1;
     }
@@ -136,18 +136,18 @@ static int __init etx_driver_init(void){
     }
  
     /*Creating struct class*/
-    if((dev_class = class_create(THIS_MODULE,"etx_class")) == NULL){
+    if((dev_class = class_create(THIS_MODULE,"myClass")) == NULL){
         printk(KERN_INFO "Cannot create the struct class\n");
         goto r_class;
     }
  
     /*Creating device*/
-    if((device_create(dev_class,NULL,dev,NULL,"etx_device")) == NULL){
+    if((device_create(dev_class,NULL,dev,NULL,"myDevice")) == NULL){
         printk(KERN_INFO "Cannot create the Device 1\n");
         goto r_device;
     }
  
-    if(request_irq (IRQ_NO,(irq_handler_t)irq_handler,IRQF_SHARED,"etx_device",(void*)(irq_handler))) {
+    if(request_irq (IRQ_NO,(irq_handler_t)irq_handler,IRQF_SHARED,"my_device",(void*)(irq_handler))) {
         printk(KERN_INFO "my_device: cannot register IRQ ");
         goto irq;
     }
@@ -176,7 +176,7 @@ module_init(etx_driver_init);
 module_exit(etx_driver_exit);
  
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("EmbeTronicX <embetronicx@gmail.com>");
+MODULE_AUTHOR("<mehmetrizaoz@gmail.com>");
 MODULE_DESCRIPTION("A simple device driver - Signals");
 MODULE_VERSION("1.20");
 
