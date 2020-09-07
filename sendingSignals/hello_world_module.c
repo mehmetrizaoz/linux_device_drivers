@@ -3,7 +3,6 @@
 #include <linux/module.h>
 #include <linux/kdev_t.h>
 #include <linux/fs.h>
-#include <linux/signal.h>
 #include <linux/cdev.h>
 #include "linux/sched/signal.h"
 #include <linux/device.h>
@@ -54,29 +53,30 @@ static irqreturn_t irq_handler(int irq,void *dev_id) {
     status   = inb(0x64);
     scancode = inb(0x60);
     
-    switch (scancode)
-    {
-    case 0x01:  
-      printk (KERN_INFO "! You pressed Esc ...\n");
-      //Sending signal to app
-      memset(&info, 0, sizeof(struct siginfo));
-      info.si_signo = SIGETX;
-      info.si_code = SI_QUEUE;
-      info.si_int = 1;
+    switch (scancode){
+      case 0x01:  
+         printk (KERN_INFO "! You pressed Esc ...\n");
+         //Sending signal to app
+         memset(&info, 0, sizeof(struct siginfo));
+         info.si_signo = SIGETX;
+         info.si_code = SI_QUEUE;
+         info.si_int = 1;
  
-      if (task != NULL) {
-        printk(KERN_INFO "Sending signal to app\n");
-        if(send_sig_info(SIGETX, (struct kernel_siginfo *)&info, task) < 0) {
-            printk(KERN_INFO "Unable to send signal\n");
-        }
-      }
+         if (task != NULL) {
+           printk(KERN_INFO "Sending signal to app\n");
+           if(send_sig_info(SIGETX, (struct kernel_siginfo *)&info, task) < 0) {
+               printk(KERN_INFO "Unable to send signal\n");
+           }
+         }
       break;
       
-    case 0x3B:  printk (KERN_INFO "! You pressed F1 ...\n");
+      case 0x3B:  printk (KERN_INFO "! You pressed F1 ...\n");
       break;
-    case 0x3C:  printk (KERN_INFO "! You pressed F2 ...\n");
+      
+      case 0x3C:  printk (KERN_INFO "! You pressed F2 ...\n");
       break;
-    default: break;
+      
+      default: break;
     }
 
     return IRQ_HANDLED;
@@ -112,7 +112,7 @@ static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, 
 static long etx_ioctl(struct file *file, unsigned int cmd, unsigned long arg){
     if (cmd == REG_CURRENT_TASK) {
         printk(KERN_INFO "REG_CURRENT_TASK\n");
-        task = get_current();
+        task = get_current(); //get pid
         signum = SIGETX;
     }
     return 0;
