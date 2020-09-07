@@ -48,22 +48,37 @@ static struct file_operations fops ={
  
 //Interrupt handler for IRQ 11. 
 static irqreturn_t irq_handler(int irq,void *dev_id) {
+    static unsigned char scancode, status;
     struct siginfo info;
-    printk(KERN_INFO "Shared IRQ: Interrupt Occurred");
+        
+    status   = inb(0x64);
+    scancode = inb(0x60);
     
-    //Sending signal to app
-    memset(&info, 0, sizeof(struct siginfo));
-    info.si_signo = SIGETX;
-    info.si_code = SI_QUEUE;
-    info.si_int = 1;
+    switch (scancode)
+    {
+    case 0x01:  
+      printk (KERN_INFO "! You pressed Esc ...\n");
+      //Sending signal to app
+      memset(&info, 0, sizeof(struct siginfo));
+      info.si_signo = SIGETX;
+      info.si_code = SI_QUEUE;
+      info.si_int = 1;
  
-    if (task != NULL) {
+      if (task != NULL) {
         printk(KERN_INFO "Sending signal to app\n");
         if(send_sig_info(SIGETX, (struct kernel_siginfo *)&info, task) < 0) {
             printk(KERN_INFO "Unable to send signal\n");
         }
+      }
+      break;
+      
+    case 0x3B:  printk (KERN_INFO "! You pressed F1 ...\n");
+      break;
+    case 0x3C:  printk (KERN_INFO "! You pressed F2 ...\n");
+      break;
+    default: break;
     }
- 
+
     return IRQ_HANDLED;
 }
  
