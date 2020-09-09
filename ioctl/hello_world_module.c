@@ -118,6 +118,6 @@ module_init(etx_driver_init);
 module_exit(etx_driver_exit);
  
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("EmbeTronicX <embetronicx@gmail.com or admin@embetronicx.com>");
+MODULE_AUTHOR("<mehmetrizaoz@gmail.com>");
 MODULE_DESCRIPTION("A simple device driver");
 MODULE_VERSION("1.5");
