@@ -13,9 +13,6 @@
 static struct hrtimer etx_hr_timer;
 static unsigned int count = 0;
  
- 
-//mehmet
- 
 dev_t dev = 0;
 static struct class *dev_class;
 static struct cdev etx_cdev;
