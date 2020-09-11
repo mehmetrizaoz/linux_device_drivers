@@ -11,11 +11,11 @@
 clear
 insmod hello_world_module.ko
 echo -"------------------------------"
-echo 1 > /dev/etx_device
+echo 1 > /dev/myDevice
 echo -"------------------------------"
 dmesg | tail -10
 echo -"------------------------------"
-cat /dev/etx_device
+cat /dev/myDevice
 echo -"------------------------------"
 dmesg | tail -10
 rmmod hello_world_module.ko

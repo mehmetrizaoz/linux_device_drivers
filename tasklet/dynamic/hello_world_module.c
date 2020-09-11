@@ -165,7 +165,7 @@ static int __init etx_driver_init(void){
     /* Init the tasklet bt Dynamic Method */
     tasklet  = kmalloc(sizeof(struct tasklet_struct),GFP_KERNEL);
     if(tasklet == NULL) {
-        printk(KERN_INFO "etx_device: cannot allocate Memory");
+        printk(KERN_INFO "myDevice: cannot allocate Memory");
         goto irq;
     }
     tasklet_init(tasklet,tasklet_fn,0);
