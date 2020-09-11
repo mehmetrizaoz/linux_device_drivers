@@ -12,9 +12,6 @@
 #define TIMEOUT   5000 * 1000000L  //nano seconds
 static struct hrtimer etx_hr_timer;
 static unsigned int count = 0;
- //1
- //2
- //3
 dev_t dev = 0;
 static struct class *dev_class;
 static struct cdev etx_cdev;
