@@ -1,3 +1,3 @@
 # deviceDrivers
 
-Linux kernel space tutorials
+Linux kernel space exercises based on embetronix.
